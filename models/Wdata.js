@@ -16,6 +16,9 @@ let Wdata = new Schema({
   time:{
     type: String
   },
+  date:{
+    type: String
+  },
   },{
     collection: 'Data', versionKey :false
   }

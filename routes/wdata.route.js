@@ -29,6 +29,29 @@ wdataRoutes.route('/').get(function (req, res) {
     });
   });
 
+  wdataRoutes.route('/day/:daten').get(function (req, res) {
+    
+
+    //let q = Wdata.find().sort({ _id: -1 }).limit(20);
+    let datenow = req.params.daten;
+    var q = Wdata.find({date: {$eq :datenow}});
+
+    q.exec((err, wdata) =>{
+
+
+
+      if(err){
+        console.log(err);
+      }
+      else {
+        res.json(wdata);
+      }
+    });
+  });
+
+
+
+
 wdataRoutes.route('/edit/:id').get(function (req, res) {
     let id = req.params.id;
     Wdata.findById(id, function (err, wdata){
